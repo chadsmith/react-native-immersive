@@ -44,9 +44,9 @@ class testReactNative extends Component {
     }
   }
 
-  componentDidMount () { Immersive.addImmersiveListener(this.restoreImmersive) }
+  componentDidMount () { this.listener = Immersive.addImmersiveListener(this.restoreImmersive) }
 
-  componentWillUnmount () { Immersive.removeImmersiveListener(this.restoreImmersive) }
+  componentWillUnmount () { if(this.listener) this.listener.remove(); }
 
   renderTest () {
     const { isImmersive, isRestoreImmersive, isModal, immersiveState, text } = this.state

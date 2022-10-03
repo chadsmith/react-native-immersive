@@ -97,8 +97,9 @@ const restoreImmersive = () => {
   __DEV__ && console.warn('Immersive State Changed!')
   Immersive.on()
 }
-Immersive.addImmersiveListener(restoreImmersive)
-Immersive.removeImmersiveListener(restoreImmersive)
+const listener = Immersive.addImmersiveListener(restoreImmersive);
+// later
+listener.remove();
 ```
 
 The Native Module itself will cover some basic Immersive State change (but not something like Modal + Alert).
